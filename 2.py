@@ -18,7 +18,7 @@ class ScreenProcessor:
             center = pyautogui.center(match)
             pyautogui.moveTo(center.x - 12, center.y)
             pyautogui.click(button="right")
-            time.sleep(0.3)
+            if not windows(): time.sleep(0.3)
             link_match = pyautogui.locateOnScreen(link_image_path, region=self.link_region)
             if link_match:
                 link_center = pyautogui.center(link_match)
