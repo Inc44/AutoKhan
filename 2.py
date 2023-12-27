@@ -1,3 +1,5 @@
+#pip install PyAutoGUI
+#pip install opencv-python
 import pyautogui
 import pyperclip
 import numpy
