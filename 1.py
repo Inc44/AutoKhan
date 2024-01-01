@@ -10,13 +10,13 @@ import urllib.request
 
 def is_youtube_accessible():
     try:
-        return urllib.request.urlopen('http://youtube.com', timeout=5).status == 200
+        return urllib.request.urlopen("http://youtube.com", timeout=5).status == 200
     except:
         return False
 
 
 def is_windows():
-    return os.name == 'nt'
+    return os.name == "nt"
 
 
 def read_urls(file_path):
@@ -30,6 +30,7 @@ def extract_time_from_screenshot(screenshot):
     cleaned_time = re.sub(r"[^0-9:]", "", time_part)
     minutes, seconds = map(int, cleaned_time.split(":"))
     return minutes * 60 + seconds
+
 
 url_file_path = "links.txt"
 urls_to_process = read_urls(url_file_path)
