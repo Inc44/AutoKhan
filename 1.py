@@ -4,10 +4,40 @@ import webbrowser
 import time
 import pytesseract
 import re
+import urllib.request
+def youtube_connection():
+    try:
+        return urllib.request.urlopen('youtube.com', timeout=5).status == 200
+    except:
+        return False
+
 import os
 def windows():
     return True if os.name == 'nt' else False
-if windows():
+if not youtube_connection():
+    click_coordinates = (490, 800)
+    region = (510, 790, 90, 20)
+    url_file_path = "links.txt"
+    with open(url_file_path, "r", encoding="utf-8") as file:
+        urls_to_process = [line.strip() for line in file if line.strip()]
+    for url in urls_to_process:
+        try:
+            webbrowser.open(url)
+            time.sleep(6)
+            pyautogui.click(click_coordinates)
+            screenshot = pyautogui.screenshot(region=region)
+            screenshot.save("test.png")
+            ocr_result = pytesseract.image_to_string(screenshot)
+            time_part = ocr_result.split(" / ")[1]
+            time_part_cleaned = cleaned_var = re.sub(r"[^0-9:]", "", time_part)
+            minutes, seconds = map(int, time_part_cleaned.split(":"))
+            total_seconds = minutes * 60 + seconds
+            adjustment_seconds = total_seconds + 6
+            time.sleep(adjustment_seconds)
+            pyautogui.hotkey("ctrl", "w")
+        except IndexError as exception:
+            print(exception)
+elif windows():
     click_coordinates = (1725, 650)
     target_color = (25, 100, 242)
     play_region = (45, 1400, 30, 30)
