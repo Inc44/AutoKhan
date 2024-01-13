@@ -1,4 +1,4 @@
-# watcher
+# watcher (pip install -r requirements.txt --upgrade)
 import os
 import time
 import webbrowser

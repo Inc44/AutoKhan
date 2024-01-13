@@ -1,2 +1,3 @@
 *.txt
 test.png
+!requirements.txt

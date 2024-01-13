@@ -60,8 +60,8 @@ class ScreenProcessor:
 
 
 # image_paths = ["article.png", "article_done.png", "video.png", "video_done.png", "video_half_done.png", "video_review.png"]
-# image_paths = ["article.png", "video.png", "video_half_done.png", "video_review.png"] #NOT DONE
-image_paths = ["article_done.png", "video_done.png"]  # DONE
+image_paths = ["article.png", "video.png", "video_half_done.png", "video_review.png"] #NOT DONE
+# image_paths = ["article_done.png", "video_done.png"]  # DONE
 search_region = (475, 115, 45, 1300) if windows() else (470, 145, 50, 1270)
 link_region = (475, 115, 45, 1300) if windows() else (470, 145, 70, 1270)
 processor = ScreenProcessor(search_region=search_region, link_region=link_region)
