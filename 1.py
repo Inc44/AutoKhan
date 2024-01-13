@@ -54,12 +54,11 @@ if not is_youtube_accessible():
         except IndexError as exception:
             print(exception)
 else:
+    click_coordinates = (1900, 580)
     if is_windows():
-        click_coordinates = (1725, 650)
         target_color = (25, 100, 242)
         play_region = (45, 1400, 30, 30)
     else:
-        click_coordinates = (1900, 580)
         target_color = (24, 101, 242)
         play_region = (45, 1395, 40, 40)
     region = (140, 1400, 160, 30)
