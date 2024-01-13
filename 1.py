@@ -29,7 +29,10 @@ def extract_time_from_screenshot(screenshot):
     time_part = ocr_result.split(" / ")[1]
     cleaned_time = re.sub(r"[^0-9:]", "", time_part)
     minutes, seconds = map(int, cleaned_time.split(":"))
-    return minutes * 60 + seconds
+    if is_youtube_accessible():
+        return (minutes * 60 + seconds)/2
+    else:
+        return minutes * 60 + seconds
 
 
 url_file_path = "links.txt"
